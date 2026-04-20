@@ -26,7 +26,21 @@ class Solution:
             root.right = self.deleteNode(root.right, key)
 
         else:
-            if not root.left: return root.right
-            if not root.right: return root.left
+            if not root.left:
+                return root.right
 
-            return root.right
+            elif not root.right:
+                return root.left
+
+            successor = self.findMin(root.right)
+            root.val = successor.val
+
+            root.right = self.deleteNode(root.right, successor.val)
+
+        return root
+
+    def findMin(self, node):
+        current = node
+        while current.left:
+            current = current.left
+        return current
