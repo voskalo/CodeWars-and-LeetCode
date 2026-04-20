@@ -19,13 +19,14 @@ class Solution:
         if not root:
             return None
 
-        if root.val == key:
-            root = None
+        if key < root.val:
+            root.left = self.deleteNode(root.left, key)
 
-        elif key < root.val:
-            self.deleteNode(root.left, key)
+        elif key > root.val:
+            root.right = self.deleteNode(root.right, key)
 
         else:
-            self.deleteNode(root.right, key)
+            if not root.left: return root.right
+            if not root.right: return root.left
 
-        return root
+            return root.right
