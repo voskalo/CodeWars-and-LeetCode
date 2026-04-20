@@ -6,7 +6,7 @@ def pre_order(node):
     if not node:
         return []
 
-    return [node.data] + pre_order(node.left) + pre_order(node.left)
+    return [node.data] + pre_order(node.left) + pre_order(node.right)
 
 
 # In-order traversal
